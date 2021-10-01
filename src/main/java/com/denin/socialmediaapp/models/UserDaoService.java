@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Component
@@ -35,5 +36,17 @@ public class UserDaoService {
         }
         userList.add(user);
         return user;
+    }
+
+    public User deleteById(Integer id){
+        Iterator<User> iterator = userList.iterator();
+        while(iterator.hasNext()){
+            User user = iterator.next();
+            if(user.getId() == id){
+                iterator.remove();
+                return user;
+            }
+        }
+        return null;
     }
 }
