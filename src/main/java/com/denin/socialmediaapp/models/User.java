@@ -1,10 +1,14 @@
 package com.denin.socialmediaapp.models;
 
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class User {
     private Integer id;
+    @Size(min = 2, message = "Name should have at least two characters")
     private String name;
+    @Past(message = "BirthData should be in the past")
     private Date birthDate;
 
     public User() {
